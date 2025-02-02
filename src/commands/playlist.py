@@ -23,7 +23,7 @@ class PlaylistCommand(BaseCommand):
         else:
             self.controller.player_name = message_info.nickname
             self.soul_handler.ensure_mic_active()
-            playing_info = self.handler.play_playlist(query)
+            playing_info = self.play_playlist(query)
 
         return playing_info
 
