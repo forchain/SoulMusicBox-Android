@@ -26,6 +26,7 @@ class AppController:
         self.input_queue = queue.Queue()
         self.is_running = True
         self.in_console_mode = False
+        self.player_name = 'Outlier'
         
         # Get lyrics formatter tags from lyrics command config
         lyrics_tags = next(
