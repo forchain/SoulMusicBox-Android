@@ -17,10 +17,15 @@ class PlaylistCommand(BaseCommand):
 
     def process(self, message_info, parameters):
         query = ' '.join(parameters)
-        self.soul_handler.ensure_mic_active()
-        self.controller.player_name = message_info.nickname
-        info = self.play_playlist(query)
-        return info
+
+        if len(parameters) == 0:
+            playing_info = self.handler.get_playlist_info()
+        else:
+            self.controller.player_name = message_info.nickname
+            self.soul_handler.ensure_mic_active()
+            playing_info = self.handler.play_playlist(query)
+
+        return playing_info
 
     def select_playlist_tab(self):
         tab = self.handler.wait_for_element_clickable_plus('playlist_tab')
